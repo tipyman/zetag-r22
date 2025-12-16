@@ -85,7 +85,7 @@ namespace ZETag_R22 {
                    5    Query data error
        */
     //% blockId=Send_ZETag_command block="Send ZETag command %txArray"
-    //% weight=80 blockGap=8
+    //% group="Send data" weight=95 blockGap=8
     export function Send_ZETag_command(txArray: number[]): number[] {
         const txArraySize = txArray.length
         for (let l = 0; l < txArraySize; l++) {
@@ -109,7 +109,7 @@ namespace ZETag_R22 {
      * send zetag application data
      */
     //% blockId=Transmit_ZETag_data block="Transmit ZETag data %dataArray"
-    //% weight=80 blockGap=8
+    //% group="Send data" weight=95 blockGap=8
     export function Transmit_ZETag_data(txArray: number[]): void {
         // 0xff+2+0x80=0x181 -> 0x81
         // Query FF 00 02 80 81
@@ -132,6 +132,7 @@ namespace ZETag_R22 {
      * set tx power
      */
     //% blockId=Set TX_Power block="Set TX Power %txPower (dB)"
+    //% group="その他"
     //% weight=80 blockGap=8
     //% txPower.min=1 txPower.max=10 txPower.defl=10
     export function Set_TX_Power(txPower: number): void {
@@ -149,6 +150,7 @@ namespace ZETag_R22 {
      * set channel spacing
      */
     //% blockId=set_channel_spacing block="Set channel spacing %chSpace (KHz)"
+    //% group="その他"
     //% weight=80 blockGap=8
     //% chSpace.min=100 chSpace.max=200 chSpace.defl=100
     export function Set_channel_spacing(chSpace: number): void {
@@ -167,6 +169,7 @@ namespace ZETag_R22 {
      * set transmission frequency
      */
     //% blockId=Set_Frequency block="Set Frequency %frequency (Hz) %chNum (ch) %chStep"
+    //% group="その他"
     //% weight=80 blockGap=8
     //% frequency.min=470000000 frequency.max=928000000 frequency.defl=922080000
     //% chNum.min=1 chNum.max=6 chNum.defl=2
