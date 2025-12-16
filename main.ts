@@ -249,7 +249,7 @@ namespace ZETag_R22 {
      * ZETag の無線設定（周波数・帯域幅・チャンネル数・出力）をまとめて適用
      */
     //% blockId=zetag_setting
-    //% block="ZETag Setting\n\nFrequency (Hz) %frequency \nBand width (kHz) %chSpace\nNumber of Channel (ch) %chNum\nTx Power (dB) %txPower"
+    //% block="ZETag Setting\r\nFrequency (Hz) %frequency \nBand width (kHz) %chSpace\nNumber of Channel (ch) %chNum\nTx Power (dB) %txPower"
     //% group="ZETag Setting" weight=95 blockGap=8
     //% frequency.min=470000000 frequency.max=928000000 frequency.defl=922080000
     //% chSpace.defl=ChSpace.KHz100
