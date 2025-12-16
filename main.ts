@@ -261,8 +261,8 @@ namespace ZETag_R22 {
         chNum: ChNum,
         txPower: TxPower
     ): void {
-        // 1) 帯域幅の設定
-        Set_channel_spacing(chSpace)
+        // 1) 帯域幅の設定 いずれの設定でも100KHzにする
+        Set_channel_spacing(ChSpace.KHz100)
 
         // 2) Tx 出力の設定
         Set_TX_Power(txPower)
