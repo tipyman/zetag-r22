@@ -1,7 +1,6 @@
 /**
  * makecode ZETag module Package Release 2.2
- * By 2025 Socionext Inc. and ZETA alliance Japan
- * Written by M.Urade　2025/12/16
+ * Written by Masakazu Urade (Tipyman)　2025/12/16
  */
 
 /**
