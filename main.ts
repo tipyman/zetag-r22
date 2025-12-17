@@ -132,8 +132,7 @@ namespace ZETag_R22 {
      * set tx power
      */
     //% blockId=Set TX_Power block="Set TX Power %txPower (dB)"
-    //% subcategory="その他"
-    //% group="ZETag Setting" 
+    //% subcategory="Other"
     //% weight=95 blockGap=8
     //% txPower.min=1 txPower.max=10 txPower.defl=10
     export function Set_TX_Power(txPower: number): void {
@@ -151,8 +150,7 @@ namespace ZETag_R22 {
      * set channel spacing
      */
     //% blockId=set_channel_spacing block="Set channel spacing %chSpace (kHz)"
-    //% subcategory="その他"
-    //% group="ZETag Setting"
+    //% subcategory=""Other""
     //% weight=95 blockGap=8
     //% chSpace.min=100 chSpace.max=200 chSpace.defl=100
     export function Set_channel_spacing(chSpace: number): void {
@@ -171,8 +169,7 @@ namespace ZETag_R22 {
      * set transmission frequency
      */
     //% blockId=Set_Frequency block="Set Frequency %frequency (Hz) %chNum (ch) %chStep"
-    //% subcategory="その他"
-    //% group="ZETag Setting"
+    //% subcategory=""Other""
     //% weight=95 blockGap=8
     //% frequency.min=470000000 frequency.max=928000000 frequency.defl=922080000
     //% chNum.min=1 chNum.max=6 chNum.defl=2
