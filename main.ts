@@ -149,7 +149,7 @@ namespace ZETag_R22 {
     /**
      * set channel spacing
      */
-    //% blockId=set_channel_spacing block="Set channel spacing %chSpace (KHz)"
+    //% blockId=set_channel_spacing block="Set channel spacing %chSpace (kHz)"
     //% subcategory="その他"
     //% group="ZETag Setting" weight=95 blockGap=8
     //% chSpace.min=100 chSpace.max=200 chSpace.defl=100
@@ -252,7 +252,7 @@ namespace ZETag_R22 {
      * ZETag の無線設定（周波数・帯域幅・チャンネル数・出力）をまとめて適用
      */
     //% blockId=zetag_setting
-    //% block="ZETag Setting|Frequency %frequency\u2060(Hz)|Band width %chSpace\u2060(kHz)|Number of Channel %chNum\u2060(ch)|Tx Power %txPower\u2060(dB)"
+    //% block="ZETag Setting|Frequency %frequency Hz|Band width %chSpace kHz|Number of Channel %chNum ch|Tx Power %txPower dB"
     //% group="ZETag Setting" weight=95 blockGap=8
     //% frequency.min=470000000 frequency.max=928000000 frequency.defl=922080000
     //% chSpace.defl=ChSpace.KHz200
