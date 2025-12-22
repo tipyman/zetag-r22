@@ -1,6 +1,8 @@
 {
     "name": "ZETag-R2.2",
-    "description": "",
+    "version": "2.2",
+    "description": "An extension to easily control ZETag module from micro:bit",
+    "license": "MIT",
     "dependencies": {
         "core": "*",
         "radio": "*",
