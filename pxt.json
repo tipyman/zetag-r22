@@ -1,6 +1,6 @@
 {
     "name": "ZETag-R2.2",
-    "version": "2.2",
+    "version": "2.2.0",
     "description": "An extension to easily control ZETag module from micro:bit",
     "license": "MIT",
     "dependencies": {
@@ -23,5 +23,5 @@
     "supportedTargets": [
         "microbit"
     ],
-    "preferredEditor": "tsprj"
+    "preferredEditor": "blocks"
 }
