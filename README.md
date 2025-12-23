@@ -53,7 +53,7 @@ MakeCodeでこのリポジトリを編集する場合：
 micro:bitからZETag MSTG-ST30をUARTで制御し、周波数・チャンネル・出力設定やデータ送信を行う拡張です。
 ・ Wakeup制御: P2（Lアクティブ）
 ・ UART: P1(TX) → ST30 RX、P0(RX) → ST30 TX
-・ 推奨ボーレート: 115,200bps
+・ ボーレート: 115,200bps
 ・ 占有ピン: P0/P1/P2（他機能との併用不可）
 
 周波数テーブル（ZETag MSTG-ST30）
@@ -96,7 +96,7 @@ TypeScriptサンプル（Wakeup="H"アクティブ対応）
 
 注意事項
 ・ WakeupはLアクティブ（Lowで起動）
-・ UARTは115,200bps推奨
+・ UARTは115,200bpsに設定
 ・ P0/P1/P2占有（他機能との併用不可）
 ・ TX/RXクロス接続
 ・ 電波法に適合する周波数を使用
