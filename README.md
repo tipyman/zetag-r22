@@ -77,7 +77,7 @@ micro:bitからZETag MSTG-ST30をUARTで制御し、周波数・チャンネル�
 刻み幅: 200kHz
 チャネル数: 38
 
-TypeScriptサンプル（Wakeup=Lアクティブ対応）
+TypeScriptサンプル（Wakeup="H"アクティブ対応）
     TypeScriptserial.redirect(SerialPin.P1, SerialPin.P0, BaudRate.BaudRate115200);
     // Wakeup: Lアクティブ → Lowで起動
     pins.digitalWritePin(DigitalPin.P2, 0);
