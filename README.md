@@ -22,3 +22,86 @@ MakeCode でこのリポジトリを編集します。
 
 * for PXT/microbit
 <script src="https://makecode.com/gh-pages-embed.js"></script><script>makeCodeRender("{{ site.makecode.home_url }}", "{{ site.github.owner_name }}/{{ site.github.repository_name }}");</script>
+
+ZETag R2.2 — MakeCode拡張（micro:bit → ZETag MSTG-ST30制御）
+このページを開く → https://tipyman.github.io/zetag-r22/
+
+試験機能として使用
+このリポジトリは、MakeCodeで 拡張機能 として追加できます。
+・ https://makecode.microbit.org/ を開く
+・ 歯車メニュー → 拡張機能 をクリック
+・ 検索欄に以下を入力
+　　https://tipyman.github.io/zetag-r22/
+・ 「ZETag R2.2」カテゴリが表示されます
+
+
+このプロジェクトを編集します
+MakeCodeでこのリポジトリを編集する場合：
+・ https://makecode.microbit.org/ を開く
+・ 「URLから読み込み」を選択し、以下を入力
+　　https://github.com/tipyman/zetag-r22
+
+メタデータ（検索、レンダリングに使用）
+    <script src="https://makecode.com/docs"></script>
+    <script>
+    makeCodeRender("{{ site.makecode.home_url }}");
+    </script>
+
+
+詳細仕様（ZETag R2.2 MakeCode拡張）
+概要
+micro:bitからZETag MSTG-ST30をUARTで制御し、周波数・チャンネル・出力設定やデータ送信を行う拡張です。
+・ Wakeup制御: P2（Lアクティブ）
+・ UART: P1(TX) → ST30 RX、P0(RX) → ST30 TX
+・ 推奨ボーレート: 115,200bps
+・ 占有ピン: P0/P1/P2（他機能との併用不可）
+
+周波数テーブル（ZETag MSTG-ST30）
+
+| 周波数番号 | 中心周波数 [MHz] |
+|-----------|------------------|
+| 0         | 920.6           |
+| 1         | 920.8           |
+| 2         | 921.0           |
+| ...       | ...             |
+| 18        | 924.2           |
+| 19        | 924.4           |
+| ...       | ...             |
+| 37        | 928.0           |
+
+**範囲**: 920.6MHz〜928.0MHz  
+**刻み幅**: 200kHz  
+**チャネル数**: 38
+
+範囲: 920.6MHz〜928.0MHz
+刻み幅: 200kHz
+チャネル数: 38
+
+TypeScriptサンプル（Wakeup=Lアクティブ対応）
+    TypeScriptserial.redirect(SerialPin.P1, SerialPin.P0, BaudRate.BaudRate115200);
+    // Wakeup: Lアクティブ → Lowで起動
+    pins.digitalWritePin(DigitalPin.P2, 0);
+    basic.pause(10);
+    pins.digitalWritePin(DigitalPin.P2, 1);
+    
+    // 周波数番号指定で設定
+    ZETag_R22.Set_Frequency_By_Index(10);    // 922.6MHz
+    ZETag_R22.Set_TX_Power(8);
+    ZETag_R22.Set_channel_spacing(200);
+    
+    // データ送信
+    input.onButtonPressed(Button.A, function () {
+        ZETag_R22.Transmit_ZETag_data([0x01, 0x02, 0xA5, 0x5A]);
+    });
+
+注意事項
+・ WakeupはLアクティブ（Lowで起動）
+・ UARTは115,200bps推奨
+・ P0/P1/P2占有（他機能との併用不可）
+・ TX/RXクロス接続
+・ 電波法に適合する周波数を使用
+
+ライセンス / リンク
+・ 公開ページ: https://tipyman.github.io/zetag-r22/
+・ GitHubリポジトリ: https://github.com/tipyman/zetag-r22
+・ ライセンス: MIT推奨
