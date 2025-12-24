@@ -29,7 +29,7 @@ TX/RXはクロス接続です。ボーレートは 115,200bps を使用（MakeCo
 周波数テーブル（ZETag MSTG-ST30）
 
 | 周波数番号 | 中心周波数 [MHz] |
-|-----------|------------------|
+|-----------|-----------------|
 | 0         | 920.6           |
 | 1         | 920.8           |
 | 2         | 921.0           |
@@ -109,3 +109,4 @@ TypeScriptサンプル（Wakeup="H"アクティブ対応）
 ・ 公開ページ: https://tipyman.github.io/zetag-r22/
 ・ GitHubリポジトリ: https://github.com/tipyman/zetag-r22
 ・ ライセンス: MIT推奨
+
