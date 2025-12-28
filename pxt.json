@@ -4,9 +4,7 @@
     "description": "An extension to easily control ZETag module from micro:bit",
     "license": "MIT",
     "dependencies": {
-        "core": "*",
-        "radio": "*",
-        "microphone": "*"
+        "core": "*"
     },
     "files": [
         "main.blocks",
