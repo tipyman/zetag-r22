@@ -1,17 +1,18 @@
 ーーーーーーーーーーーーーーーーーーーーーーーーーーー
-詳細仕様（ZETag R2.2 MakeCode拡張）
+詳細仕様（ZETag R2.3 MakeCode拡張）
 概要
 micro:bitからZETag MSTG-ST30をUARTで制御し、周波数・チャンネル・出力設定やデータ送信を行う拡張です。
+R2.2からの変更点は、4FSK/8FSKのモード選択機能を追加しました。
 
 拡張の追加方法（MakeCode）
 ・ MakeCode for micro:bit を開く
 ・ 歯車メニュー → Extensions
 ・ 検索欄に GitHub リポジトリ URL を貼り付け
-    https://github.com/tipyman/zetag-r22
+    https://github.com/tipyman/zetag-r23
 または「Import URL」でも同URLを指定可能です（承認リスト外でもURL指定で読み込みできます）。
 
 
-追加が完了すると、ツールボックスに ZETag-R22 カテゴリが現れます。
+追加が完了すると、ツールボックスに ZETag-R23 カテゴリが現れます。
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 ハードウェア構成（必読）
@@ -29,7 +30,7 @@ TX/RXはクロス接続です。ボーレートは 115,200bps を使用（MakeCo
 周波数テーブル（ZETag MSTG-ST30）
 
 | 周波数番号 | 中心周波数 [MHz] |
-|-----------|-----------------|
+|-----------|------------------|
 | 0         | 920.6           |
 | 1         | 920.8           |
 | 2         | 921.0           |
@@ -60,12 +61,13 @@ TX/RXはクロス接続です。ボーレートは 115,200bps を使用（MakeCo
     export function Transmit_ZETag_data(txArray: number[]): void 
 
 ZETag初期化
-    // ZETagの使用周波数、チャンネル数、チャンネル間隔、出力パワーを設定
+    // ZETagの使用周波数、チャンネル数、チャンネル間隔、出力パワー、送信モードを設定
     export function applySetting(
         frequency: number,
         chSpace: ChSpace,
         chNum: ChNum,
-        txPower: TxPower
+        txPower: TxPower,
+        mode: Mode
     ): void 
 
 その他　ZETagのパラメータ個別に初期化
@@ -87,13 +89,13 @@ TypeScriptサンプル（Wakeup="H"アクティブ対応）
     pins.digitalWritePin(DigitalPin.P2, 1);
     
     // 周波数番号指定で設定
-    ZETag_R22.Set_Frequency_By_Index(10);    // 922.6MHz
-    ZETag_R22.Set_TX_Power(8);
-    ZETag_R22.Set_channel_spacing(200);
+    ZETag_R23.Set_Frequency_By_Index(10);    // 922.6MHz
+    ZETag_R23.Set_TX_Power(8);
+    ZETag_R23.Set_channel_spacing(200);
     
     // データ送信
     input.onButtonPressed(Button.A, function () {
-        ZETag_R22.Transmit_ZETag_data([0x01, 0x02, 0xA5, 0x5A]);
+        ZETag_R23.Transmit_ZETag_data([0x01, 0x02, 0xA5, 0x5A]);
     });
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーー
@@ -106,7 +108,6 @@ TypeScriptサンプル（Wakeup="H"アクティブ対応）
 
 ーーーーーーーーーーーーーーーーーーーーーーーーーーー
 ライセンス / リンク
-・ 公開ページ: https://tipyman.github.io/zetag-r22/
-・ GitHubリポジトリ: https://github.com/tipyman/zetag-r22
+・ 公開ページ: https://tipyman.github.io/zetag-r23/
+・ GitHubリポジトリ: https://github.com/tipyman/zetag-r23
 ・ ライセンス: MIT推奨
-
