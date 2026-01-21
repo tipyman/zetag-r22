@@ -1,5 +1,14 @@
+/**
+ * makecode ZETag module Package Release 2.2
+ * Written by Masakazu Urade (Tipyman)　2025/12/16
+ */
 
-namespace ZETag_R23 {
+/**
+ * ZETag block Ver2.2
+ */
+
+//% weight=100 color=#32CD32 icon="\uf482" block="ZETag R2.2"
+namespace ZETag_R22 {
     const txBuffer = pins.createBuffer(1);
 
     /**
@@ -67,9 +76,9 @@ namespace ZETag_R23 {
      * @param querySize: number
      * @return queryData[]
         queryData[0]:
-                0xff    Query data is ready,
+                0xff	Query data is ready,
                    1    Time out error,
-                   2    Size error (Query size <> Receipt size),
+                   2	Size error (Query size <> Receipt size),
                    3    ZeTag error,
                    4    Checksum error,
                    5    Query data error
@@ -116,11 +125,12 @@ namespace ZETag_R23 {
         const response2 = Send_ZETag_command(header.concat(txArray).concat([checkSum]));
     }
 
+
     // --- 既存ロジック（そのまま利用） ---
     /**
      * set tx power
      */
-    //% blockId=Set_TX_Power block="Set TX Power %txPower (dB)"
+    //% blockId=Set TX_Power block="Set TX Power %txPower (dB)"
     //% subcategory="Other"
     //% weight=95 blockGap=8
     //% txPower.min=1 txPower.max=10 txPower.defl=10
@@ -138,7 +148,7 @@ namespace ZETag_R23 {
     /**
      * set channel spacing
      */
-    //% blockId=Set_channel_spacing block="Set channel spacing %chSpace (kHz)"
+    //% blockId=set_channel_spacing block="Set channel spacing %chSpace (kHz)"
     //% subcategory="Other"
     //% weight=95 blockGap=8
     //% chSpace.min=100 chSpace.max=200 chSpace.defl=100
@@ -202,24 +212,6 @@ namespace ZETag_R23 {
         const response5 = Send_ZETag_command(txArray)
     }
 
-    /**
-     * set tx mode
-     */
-    //% blockId=Set_TX_Mode block="Set TX Mode %txMode"
-    //% subcategory="Other"
-    //% weight=95 blockGap=8
-    //% txMode.defl=Mode.FSK4
-    export function Set_TX_Mode(txMode: Mode): void {
-        // FF 00 03 42 01 45; 4FSK mode
-        // FF 00 03 42 10 54; 8FSK mode
-        // Query FF 00 02 42 43
-        if (txMode === Mode.FSK4) {   // 4FSK
-            const response6 = Send_ZETag_command([0xff, 0x00, 0x03, 0x42, 0x01, 0x45])
-        } else {                    // 8FSK
-            const response62 = Send_ZETag_command([0xff, 0x00, 0x03, 0x42, 0x10, 0x54])
-        }
-    }
-
     // --- UI 用の enum（ドロップダウン生成） ---
     export enum ChSpace {
         //% block="100"
@@ -253,35 +245,24 @@ namespace ZETag_R23 {
         //% block="10"
         dBm10 = 10,
     }
-    export enum Mode {
-        //% block="4FSK"
-        FSK4 = 0,
-        //% block="8FSK"
-        FSK8 = 1
-    }
 
-    // --- 5項目をまとめた設定ブロック（完成版） ---
+    // --- 4項目をまとめた設定ブロック（完成版） ---
     /**
-     * ZETag の無線設定（周波数・帯域幅・チャンネル数・出力・送信モード）をまとめて適用
+     * ZETag の無線設定（周波数・帯域幅・チャンネル数・出力）をまとめて適用
      */
     //% blockId=zetag_setting
-    //% block="ZETag Setting|Frequency(Hz) %frequency|Band width(kHz) %chSpace|Number of Channel(ch) %chNum|Tx Power(dB) %txPower|Mode %mode"
+    //% block="ZETag Setting|Frequency(Hz) %frequency|Band width(kHz) %chSpace|Number of Channel(ch) %chNum|Tx Power(dB) %txPower"
     //% group="ZETag Setting" weight=95 blockGap=8
     //% frequency.min=470000000 frequency.max=928000000 frequency.defl=922080000
     //% chSpace.defl=ChSpace.KHz200
     //% chNum.defl=ChNum._2
     //% txPower.defl=TxPower.dBm8
-    //% mode.defl=Mode.FSK4
     export function applySetting(
         frequency: number,
         chSpace: ChSpace,
         chNum: ChNum,
-        txPower: TxPower,
-        mode: Mode
+        txPower: TxPower
     ): void {
-        // 0) 変調方式の設定
-        Set_TX_Mode(mode)
-
         // 1) 帯域幅の設定 いずれの設定でも100KHzにする
         Set_channel_spacing(ChSpace.KHz100)
 
